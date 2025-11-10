@@ -1,7 +1,8 @@
 import { MapPin, Phone, Mail } from 'lucide-react';
+import { FormEvent } from 'react';
 
 export default function Contact() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);

@@ -1,4 +1,4 @@
-import { User, Quote } from 'lucide-react';
+import { Quote } from 'lucide-react';
 
 export default function Directors() {
   return (
@@ -19,8 +19,13 @@ export default function Directors() {
         <div className="space-y-12">
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
             <div className="md:flex">
-              <div className="md:w-1/3 bg-gradient-to-br from-orange-600 to-amber-600 flex items-center justify-center p-12">
-                <User size={120} className="text-white" strokeWidth={1.5} />
+              <div className="md:w-1/3 bg-gray-900/5">
+                <img
+                  src="/vishal.jpg"
+                  alt="Portrait of Mr. Vishal Satguru Dayal Saxena"
+                  className="h-full w-full object-cover object-center md:object-[65%_center] md:min-h-[360px]"
+                  loading="lazy"
+                />
               </div>
 
               <div className="md:w-2/3 p-8 md:p-12">
@@ -59,8 +64,13 @@ export default function Directors() {
 
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
             <div className="md:flex md:flex-row-reverse">
-              <div className="md:w-1/3 bg-gradient-to-br from-amber-600 to-orange-600 flex items-center justify-center p-12">
-                <User size={120} className="text-white" strokeWidth={1.5} />
+              <div className="md:w-1/3 bg-gray-900/5">
+                <img
+                  src="/pallavi.jpg"
+                  alt="Portrait of Ms. Pallavi Mathur"
+                  className="h-full w-full object-cover md:min-h-[360px]"
+                  loading="lazy"
+                />
               </div>
 
               <div className="md:w-2/3 p-8 md:p-12">

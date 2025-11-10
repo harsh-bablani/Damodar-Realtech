@@ -1,5 +1,17 @@
 import { Building, Trees, Home, MapPin } from 'lucide-react';
 
+const krishnaResidencyImages = [
+  'p1.jpg',
+  'p2.jpg',
+  'p3.jpg',
+  'p4.jpg',
+  'p5.jpg',
+  'p6.jpg',
+  'p7.jpg',
+  'p8 building.jpg',
+  'p9 building.jpg',
+];
+
 export default function Projects() {
   return (
     <section id="projects" className="py-20 bg-white">
@@ -112,6 +124,20 @@ export default function Projects() {
             <p className="leading-relaxed">
               It's a 1 & 2 BHK flats which is actual blend of modern living, comfort and natural ventilation. Very strategically located near the posh location of Vaishali Nagar West and near the main highway of Jaipur i.e. Ajmer Road.
             </p>
+            <div className="mt-6">
+              <h4 className="text-lg font-semibold mb-3">Project Gallery</h4>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                {krishnaResidencyImages.map((image, index) => (
+                  <img
+                    key={image}
+                    src={`/${encodeURI(image)}`}
+                    alt={`Krishna Residency view ${index + 1}`}
+                    className="h-32 w-full rounded-lg object-cover shadow-md"
+                    loading="lazy"
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
