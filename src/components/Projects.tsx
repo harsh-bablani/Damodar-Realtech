@@ -1,4 +1,5 @@
-import { Building, Trees, Home, MapPin } from 'lucide-react';
+import { useCallback, useEffect, useMemo, useRef, useState, type TouchEvent } from 'react';
+import { Building, Trees, Home, MapPin, ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 const krishnaResidencyImages = [
   'p1.jpg',
@@ -11,6 +12,248 @@ const krishnaResidencyImages = [
   'p8 building.jpg',
   'p9 building.jpg',
 ];
+
+type SliderImage = {
+  src: string;
+  alt: string;
+};
+
+function ImageSlider({ images, baseAlt }: { images: string[]; baseAlt: string }) {
+  const slides: SliderImage[] = useMemo(
+    () =>
+      images.map((image, index) => ({
+        src: image.startsWith('/') ? encodeURI(image) : `/${encodeURI(image)}`,
+        alt: `${baseAlt} ${index + 1}`,
+      })),
+    [images, baseAlt]
+  );
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [lightboxImage, setLightboxImage] = useState<SliderImage | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const touchStartX = useRef<number | null>(null);
+
+  const totalSlides = slides.length;
+
+  const goTo = useCallback(
+    (index: number) => {
+      if (!totalSlides) return;
+      setCurrentIndex(((index % totalSlides) + totalSlides) % totalSlides);
+    },
+    [totalSlides]
+  );
+
+  const next = useCallback(() => goTo(currentIndex + 1), [currentIndex, goTo]);
+  const previous = useCallback(() => goTo(currentIndex - 1), [currentIndex, goTo]);
+
+  const pauseAutoPlay = useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  }, []);
+
+  const resumeAutoPlay = useCallback(() => {
+    if (totalSlides <= 1 || intervalRef.current) return;
+    intervalRef.current = setInterval(() => {
+      setCurrentIndex((prev) => ((prev + 1) % totalSlides + totalSlides) % totalSlides);
+    }, 6000);
+  }, [totalSlides]);
+
+  useEffect(() => {
+    resumeAutoPlay();
+    return () => pauseAutoPlay();
+  }, [resumeAutoPlay, pauseAutoPlay]);
+
+  const handleTouchStart = useCallback(
+    (event: TouchEvent<HTMLDivElement>) => {
+      touchStartX.current = event.touches[0].clientX;
+      pauseAutoPlay();
+    },
+    [pauseAutoPlay]
+  );
+
+  const handleTouchEnd = useCallback(
+    (event: TouchEvent<HTMLDivElement>) => {
+      if (touchStartX.current === null) {
+        resumeAutoPlay();
+        return;
+      }
+
+      const delta = event.changedTouches[0].clientX - touchStartX.current;
+      const swipeThreshold = 40;
+
+      if (Math.abs(delta) > swipeThreshold) {
+        if (delta > 0) {
+          previous();
+        } else {
+          next();
+        }
+      }
+
+      touchStartX.current = null;
+      resumeAutoPlay();
+    },
+    [next, previous, resumeAutoPlay]
+  );
+
+  useEffect(() => {
+    if (!lightboxImage) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setLightboxImage(null);
+        resumeAutoPlay();
+      } else if (event.key === 'ArrowRight') {
+        next();
+      } else if (event.key === 'ArrowLeft') {
+        previous();
+      }
+    };
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+      resumeAutoPlay();
+    };
+  }, [lightboxImage, next, previous, resumeAutoPlay]);
+
+  const renderLightbox = () => {
+    if (!lightboxImage) return null;
+
+    const closeLightbox = () => {
+      setLightboxImage(null);
+      resumeAutoPlay();
+    };
+
+    return (
+      <div
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4 py-8"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Expanded project image"
+        onClick={closeLightbox}
+      >
+        <div
+          className="relative max-h-full w-full max-w-5xl"
+          onClick={(event) => event.stopPropagation()}
+        >
+          <button
+            type="button"
+            className="absolute -top-12 right-0 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-gray-900 shadow-lg transition hover:bg-orange-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
+            aria-label="Close image preview"
+            onClick={closeLightbox}
+          >
+            <X size={20} />
+          </button>
+          <img
+            src={lightboxImage.src}
+            alt={lightboxImage.alt}
+            className="max-h-[70vh] w-full rounded-2xl object-contain shadow-2xl"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    );
+  };
+
+  if (!totalSlides) {
+    return null;
+  }
+
+  return (
+    <div className="relative">
+      <div
+        className="overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-200"
+        onMouseEnter={pauseAutoPlay}
+        onMouseLeave={resumeAutoPlay}
+      >
+        <div
+          className="flex transition-transform duration-500 ease-out"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          {slides.map((slide, index) => (
+            <button
+              key={slide.src}
+              type="button"
+              className="group relative w-full shrink-0 focus:outline-none"
+              aria-label={`Open ${slide.alt}`}
+              onClick={() => {
+                pauseAutoPlay();
+                setLightboxImage(slide);
+              }}
+            >
+              <img
+                src={slide.src}
+                alt={slide.alt}
+                className="h-72 w-full object-cover sm:h-80 md:h-96"
+                loading="lazy"
+              />
+              <span className="absolute inset-x-0 bottom-3 mx-auto hidden w-max rounded-full bg-black/50 px-4 py-1 text-sm font-medium text-white backdrop-blur transition group-hover:flex">
+                Tap to view full size
+              </span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {totalSlides > 1 && (
+        <>
+          <button
+            type="button"
+            className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-3 text-gray-900 shadow-lg transition hover:bg-orange-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
+            onClick={() => {
+              pauseAutoPlay();
+              previous();
+              resumeAutoPlay();
+            }}
+            aria-label="Previous image"
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button
+            type="button"
+            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-3 text-gray-900 shadow-lg transition hover:bg-orange-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
+            onClick={() => {
+              pauseAutoPlay();
+              next();
+              resumeAutoPlay();
+            }}
+            aria-label="Next image"
+          >
+            <ChevronRight size={20} />
+          </button>
+
+          <div className="absolute inset-x-0 bottom-5 flex justify-center gap-2">
+            {slides.map((_, index) => (
+              <button
+                key={`dot-${index.toString()}`}
+                type="button"
+                aria-label={`Go to slide ${index + 1}`}
+                className={`h-2 rounded-full transition-all ${index === currentIndex ? 'w-8 bg-orange-500' : 'w-2 bg-white/70'
+                  }`}
+                onClick={() => {
+                  pauseAutoPlay();
+                  goTo(index);
+                  resumeAutoPlay();
+                }}
+              />
+            ))}
+          </div>
+        </>
+      )}
+
+      {renderLightbox()}
+    </div>
+  );
+}
 
 export default function Projects() {
   return (
@@ -122,21 +365,14 @@ export default function Projects() {
           <div className="bg-gradient-to-br from-orange-600 to-amber-600 text-white p-8 rounded-xl shadow-lg">
             <h3 className="text-2xl font-bold mb-4">Krishna Residency</h3>
             <p className="leading-relaxed">
-              It's a 1 & 2 BHK flats which is actual blend of modern living, comfort and natural ventilation. Very strategically located near the posh location of Vaishali Nagar West and near the main highway of Jaipur i.e. Ajmer Road.
+              It's a 1 &amp; 2 BHK flats which is actual blend of modern living, comfort and natural ventilation. Very strategically located near the posh location of Vaishali Nagar West and near the main highway of Jaipur i.e. Ajmer Road.
             </p>
-            <div className="mt-6">
-              <h4 className="text-lg font-semibold mb-3">Project Gallery</h4>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {krishnaResidencyImages.map((image, index) => (
-                  <img
-                    key={image}
-                    src={`/${encodeURI(image)}`}
-                    alt={`Krishna Residency view ${index + 1}`}
-                    className="h-32 w-full rounded-lg object-cover shadow-md"
-                    loading="lazy"
-                  />
-                ))}
-              </div>
+            <div className="mt-8">
+              <h4 className="text-lg font-semibold mb-4">Project Gallery</h4>
+              <ImageSlider images={krishnaResidencyImages} baseAlt="Krishna Residency view" />
+              <p className="mt-4 text-sm text-amber-100/90">
+                Tap or click any photo to explore the residence in full size.
+              </p>
             </div>
           </div>
         </div>
