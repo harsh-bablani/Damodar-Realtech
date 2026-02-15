@@ -12,7 +12,7 @@ export default function Directors() {
             The Visionaries Behind the Legacy
           </p>
           <p className="text-lg text-gray-700 mt-4 max-w-4xl mx-auto">
-            At the soul of Damodar Realtech Private Limited stand two pioneering minds, each driven by a shared purpose — to transform the landscape of Rajasthan's luxury real estate with grace, integrity, and excellence.
+            At the soul of Damodar Realtech Private Limited stand two pioneering minds, each driven by a shared purpose, to transform the landscape of Rajasthan's luxury real estate with grace, integrity, and excellence.
           </p>
         </div>
 
@@ -30,16 +30,16 @@ export default function Directors() {
                   <div className="bg-orange-50 p-6 rounded-lg border-l-4 border-orange-600">
                     <Quote className="text-orange-600 mb-3" size={32} />
                     <p className="italic text-lg">
-                      "Homes are not built by hands alone — they are built by hearts, by heritage, and by honour. At Damodar Realtech, every structure carries a story, and every story begins with trust."
+                      "Homes are not built by hands alone, they are built by hearts, by heritage, and by honour. At Damodar Realtech, every structure carries a story, and every story begins with trust."
                     </p>
-                    <p className="text-right font-semibold mt-3 text-orange-600">— Vishal S. D. Saxena</p>
+                    <p className="text-right font-semibold mt-3 text-orange-600">— Vishal Saxena</p>
                   </div>
                 </div>
               </div>
 
               <div className="p-8 md:p-12">
                 <h3 className="text-3xl font-bold text-gray-900 mb-2">
-                  Mr. Vishal Satguru Dayal Saxena
+                  Mr. Vishal Saxena
                 </h3>
                 <p className="text-xl text-orange-600 font-semibold mb-6">Founder & Managing Director</p>
 
@@ -49,7 +49,7 @@ export default function Directors() {
                   </p>
 
                   <p>
-                    Yet it was his deep-rooted desire to honour the values of his beloved grandfather, Shri Damodar Ji, that led him to real estate — not just as an industry, but as a calling. Over the past years, Mr. Saxena has firmly established himself in the sector, holding key leadership roles with prestigious firms such as <strong>Gokul Kripa Colonizers and Developers</strong>, among others.
+                    Yet it was his deep-rooted desire to honour the values of his beloved grandfather, Mr. Damodar Lal Saxena, that led him to real estate, not just as an industry, but as a calling. Over the past years, Mr. Saxena has firmly established himself in the sector, holding key leadership roles with prestigious firms such as <strong>Gokul Kripa Colonizers and Developers</strong>, among others.
                   </p>
                 </div>
 
@@ -73,11 +73,11 @@ export default function Directors() {
 
                 <div className="space-y-4 text-gray-700 leading-relaxed">
                   <p>
-                    Graceful, insightful, and uncompromising when it comes to excellence, Ms. Pallavi Mathur brings a refined sensibility and scientific precision to the company's leadership. With a robust academic science background, she possesses a naturally analytical mind — one that seamlessly blends attention to detail with big-picture thinking.
+                    Graceful, insightful, and uncompromising when it comes to excellence, Ms. Pallavi Mathur brings a refined sensibility and scientific precision to the company's leadership. With a robust academic science background, she possesses a naturally analytical mind, one that seamlessly blends attention to detail with big-picture thinking.
                   </p>
 
                   <p>
-                    Having spent over <strong>5 years in the real estate sector</strong>, Ms. Mathur has been instrumental in shaping the executional framework and quality ethos of Damodar Realtech. Her involvement goes far beyond boardroom decisions — she oversees finance, planning, compliance, aesthetics, and quality assurance, ensuring that each project is delivered to perfection.
+                    Having spent over <strong>5 years in the real estate sector</strong>, Ms. Mathur has been instrumental in shaping the executional framework and quality ethos of Damodar Realtech. Her involvement goes far beyond boardroom decisions, she oversees finance, planning, compliance, aesthetics, and quality assurance, ensuring that each project is delivered to perfection.
                   </p>
 
                   <p>
@@ -116,7 +116,7 @@ export default function Directors() {
 
         <div className="mt-12 text-center">
           <p className="text-lg text-gray-700 max-w-4xl mx-auto italic">
-            Together, they blend corporate wisdom with entrepreneurial spirit, structure with soul, and vision with rooted values — laying the foundation for a real estate company that is as aspirational as it is trustworthy.
+            Together, they blend corporate wisdom with entrepreneurial spirit, structure with soul, and vision with rooted values, laying the foundation for a real estate company that is as aspirational as it is trustworthy.
           </p>
         </div>
       </div>

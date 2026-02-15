@@ -18,7 +18,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-20">
           <div className="flex-shrink-0 cursor-pointer" onClick={() => scrollToSection('home')}>
             <img
-              src="/WhatsApp Image 2025-10-07 at 16.47.55_07a23555.jpg"
+              src="/logo.jpeg"
               alt="Damodar Realtech"
               className="h-16 w-auto"
             />

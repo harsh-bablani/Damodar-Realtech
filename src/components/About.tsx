@@ -15,7 +15,7 @@ export default function About() {
 
         <div className="max-w-5xl mx-auto space-y-6 text-gray-700 text-lg leading-relaxed mb-16">
           <p>
-            At Damodar Realtech Private Limited, we believe that homes are not just built — they are crafted with purpose, care, and vision. Founded on April 1st, 2025, our company was born out of a legacy — named in loving memory of <strong>Shri Damodar Ji</strong>, the grandfather of our founder and director. His unwavering values of honesty, commitment, and integrity now form the very cornerstone of everything we do.
+            At Damodar Realtech Private Limited, we believe that homes are not just built they are crafted with purpose, care, and vision. Founded on April 1st, 2025, our company was born out of a legacy named in loving memory of <strong>Mr. Damodar Lal Saxena</strong>, the grandfather of our founder and director. His unwavering values of honesty, commitment, and integrity now form the very cornerstone of everything we do.
           </p>
 
           <div className="bg-gradient-to-r from-orange-50 to-amber-50 p-8 rounded-xl my-8 border-l-4 border-orange-600">
@@ -24,7 +24,7 @@ export default function About() {
               To design and deliver heart throbbing legacies of the highest quality across Rajasthan.
             </p>
             <p className="mt-4">
-              We aspire to create more than just real estate — we craft sanctuaries that speak of elegance, comfort, and timeless living.
+              We aspire to create more than just real estate, we craft sanctuaries that speak of elegance, comfort, and timeless living.
             </p>
           </div>
 
@@ -89,7 +89,7 @@ export default function About() {
             To build spaces that honour our roots and elevate your future.
           </p>
           <p className="text-lg text-center max-w-4xl mx-auto leading-relaxed mt-4 text-gray-300">
-            At Damodar Realtech, we envision a Rajasthan where luxury is accessible, trust is uncompromised, and every home carries a story worth telling. By building in the name of Shri Damodar Ji, we are reminded every day that real estate is not just about land and walls — it's about values passed down, dreams built up, and legacies that endure.
+            At Damodar Realtech, we envision a Rajasthan where luxury is accessible, trust is uncompromised, and every home carries a story worth telling. By building in the name of Mr. Damodar Lal Saxena, we are reminded every day that real estate is not just about land and walls, it's about values passed down, dreams built up, and legacies that endure.
           </p>
         </div>
       </div>

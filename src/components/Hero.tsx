@@ -29,7 +29,7 @@ export default function Hero() {
             </p>
 
             <p>
-              Incorporated on the 1st of April, 2025, Damodar Realtech Private Limited is more than just a real estate company. It is a heartfelt tribute to <strong>Shri Damodar Ji</strong>, the revered grandfather of our founder and director Mr. Vishal Saxena. A man known for his integrity, wisdom, and deep-rooted belief in offering only the best to those around him, his name now inspires our vision to redefine Rajasthan's real estate landscape with distinction, credibility, and class.
+              Incorporated on the 1st of April, 2025, Damodar Realtech Private Limited is more than just a real estate company. It is a heartfelt tribute to <strong>Mr. Damodar Lal Saxena</strong>, the revered grandfather of our founder and director Mr. Vishal Saxena. A man known for his integrity, wisdom, and deep-rooted belief in offering only the best to those around him, his name now inspires our vision to redefine Rajasthan's real estate landscape with distinction, credibility, and class.
             </p>
 
             <p>

@@ -3,22 +3,27 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const slides = [
   {
-    url: 'https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&cs=tinysrgb&w=1920',
+    url: '/p1.jpg',
     title: 'Luxury Living Spaces',
     description: 'Experience the finest residential developments in Rajasthan'
   },
   {
-    url: 'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1920',
+    url: '/p5.jpg',
     title: 'Modern Architecture',
     description: 'Blending contemporary design with traditional values'
   },
   {
-    url: 'https://images.pexels.com/photos/1643389/pexels-photo-1643389.jpeg?auto=compress&cs=tinysrgb&w=1920',
+    url: '/p4.jpg',
     title: 'Premium Villas & Flats',
     description: 'Crafted for those who appreciate elegance and sophistication'
   },
   {
-    url: 'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1920',
+    url: '/ifirst.jpeg',
+    title: 'Imperial Galaxy',
+    description: 'Your dream home awaits'
+  },
+  {
+    url: '/isec.jpeg',
     title: 'Serene Townships',
     description: 'Where families grow and dreams flourish'
   }
@@ -72,13 +77,9 @@ export default function HeroSlider() {
         </div>
       ))}
 
+
       <div className="absolute inset-0 flex items-center justify-center z-20 text-white text-center px-4">
         <div className="max-w-4xl">
-          <img
-            src="/WhatsApp Image 2025-10-07 at 16.47.55_07a23555.jpg"
-            alt="Damodar Realtech Logo"
-            className="h-24 md:h-32 w-auto mx-auto mb-6 drop-shadow-2xl"
-          />
           <h2 className="text-3xl md:text-5xl font-bold mb-4 drop-shadow-lg animate-fade-in">
             {slides[currentIndex].title}
           </h2>

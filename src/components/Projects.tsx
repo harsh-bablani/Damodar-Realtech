@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type TouchEvent } from 'react';
-import { Building, Trees, Home, MapPin, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { Building, Home, MapPin, ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 const krishnaResidencyImages = [
   'p1.jpg',
@@ -11,6 +11,24 @@ const krishnaResidencyImages = [
   'p7.jpg',
   'p8 building.jpg',
   'p9 building.jpg',
+];
+
+const imperialGalaxyImages = [
+  'ifirst.jpeg',
+  'isec.jpeg',
+  'i1.jpeg',
+  'i2.jpeg',
+  'i3.jpeg',
+  'i4.jpeg',
+  'i5.jpeg',
+  'i6.jpeg',
+  'i7.jpeg',
+  'i8.jpeg',
+  'i9.jpeg',
+  'i10.jpeg',
+  'i11.jpeg',
+  'i12.jpeg',
+  'i13.jpeg',
 ];
 
 type SliderImage = {
@@ -179,7 +197,7 @@ function ImageSlider({ images, baseAlt }: { images: string[]; baseAlt: string })
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
-          {slides.map((slide, index) => (
+          {slides.map((slide) => (
             <button
               key={slide.src}
               type="button"
@@ -271,33 +289,6 @@ export default function Projects() {
           </p>
         </div>
 
-        <div className="space-y-12">
-          <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-            <div className="md:flex items-center">
-              <div className="md:w-2/5 h-64 md:h-full bg-gradient-to-br from-green-600 to-emerald-600 flex items-center justify-center p-8">
-                <Trees size={120} className="text-white" strokeWidth={1.5} />
-              </div>
-              <div className="md:w-3/5 p-8 md:p-12">
-                <div className="flex items-center gap-2 mb-4">
-                  <MapPin className="text-green-600" size={24} />
-                  <span className="text-green-600 font-semibold">Phagi, Rajasthan</span>
-                </div>
-                <h3 className="text-3xl font-bold text-gray-900 mb-4">
-                  The Farmhouse Retreat
-                </h3>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  Nestled amidst the tranquil beauty of Phagi, our farmhouse project is a serene escape into nature's embrace. Surrounded by open skies, gentle breezes, and the untouched charm of the countryside, these farmhouses offer a lifestyle of calm, privacy, and quiet luxury.
-                </p>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  Crafted for those who long to reconnect with nature without compromising on comfort, each farmhouse is a sanctuary — ideal for weekend getaways, retirement living, or soulful solitude. With carefully planned layouts and lush surroundings, this project celebrates simplicity elevated with subtle sophistication.
-                </p>
-                <p className="italic text-gray-600 border-l-4 border-green-600 pl-4">
-                  Where the soul breathes, and the heart finds peace.
-                </p>
-              </div>
-            </div>
-          </div>
-
           <div className="bg-gradient-to-r from-blue-50 to-sky-50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
             <div className="md:flex items-center md:flex-row-reverse">
               <div className="md:w-2/5 h-64 md:h-full bg-gradient-to-br from-blue-600 to-sky-600 flex items-center justify-center p-8">
@@ -352,14 +343,20 @@ export default function Projects() {
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="mt-16 grid md:grid-cols-2 gap-8">
+          <div className="mt-16 grid md:grid-cols-2 gap-8">
           <div className="bg-gradient-to-br from-slate-900 to-gray-800 text-white p-8 rounded-xl shadow-lg">
             <h3 className="text-2xl font-bold mb-4">Imperial Galaxy</h3>
             <p className="leading-relaxed">
               Situated near Jain temple at Ajmer Road, it redefines the standard of luxury townships in Jaipur and make an impression of opulent lifestyle.
             </p>
+            <div className="mt-8">
+              <h4 className="text-lg font-semibold mb-4">Project Gallery</h4>
+              <ImageSlider images={imperialGalaxyImages} baseAlt="Imperial Galaxy view" />
+              <p className="mt-4 text-sm text-gray-300">
+                Tap or click any photo to explore the project in full size.
+              </p>
+            </div>
           </div>
 
           <div className="bg-gradient-to-br from-orange-600 to-amber-600 text-white p-8 rounded-xl shadow-lg">

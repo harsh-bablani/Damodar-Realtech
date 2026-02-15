@@ -7,9 +7,9 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div>
             <img
-              src="/WhatsApp Image 2025-10-07 at 16.47.55_07a23555.jpg"
+              src="/logo.jpeg"
               alt="Damodar Realtech"
-              className="h-20 w-auto mb-4 bg-white rounded-lg p-2"
+              className="h-20 w-auto mb-4"
             />
             <p className="text-gray-400 leading-relaxed">
               Built on legacy. Driven by excellence. Designed for you.
